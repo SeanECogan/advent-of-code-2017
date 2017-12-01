@@ -22,9 +22,9 @@ namespace AdventOfCode2017.Day1.PuzzleB
 
             for (int i = 0; i < numericString.Length; i++)
             {
-                int circularHalfway = (i + halfway) % length;
+                int halfwayAroundIndex = (i + halfway) % length;
 
-                if (numericString[i] == numericString[circularHalfway])
+                if (numericString[i] == numericString[halfwayAroundIndex])
                 {
                     sum += Convert.ToInt32(char.GetNumericValue(numericString[i]));
                 }

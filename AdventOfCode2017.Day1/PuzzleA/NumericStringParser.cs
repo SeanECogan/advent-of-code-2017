@@ -13,23 +13,15 @@ namespace AdventOfCode2017.Day1.PuzzleA
         public static int Parse(string numericString)
         {
             int sum = 0;
+            int length = numericString.Length;
 
             for (int i = 0; i < numericString.Length; i++)
             {
-                // Check for last index.
-                if (i + 1 == numericString.Length)
+                int nextCircularIndex = (i + 1) % length;
+
+                if (numericString[i] == numericString[nextCircularIndex])
                 {
-                    if (numericString[i] == numericString[0])
-                    {
-                        sum += Convert.ToInt32(char.GetNumericValue(numericString[i]));
-                    }
-                }
-                else
-                {
-                    if (numericString[i] == numericString[i + 1])
-                    {
-                        sum += Convert.ToInt32(char.GetNumericValue(numericString[i]));
-                    }
+                    sum += Convert.ToInt32(char.GetNumericValue(numericString[i]));
                 }
             }
 

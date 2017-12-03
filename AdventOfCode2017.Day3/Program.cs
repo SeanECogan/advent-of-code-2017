@@ -1,8 +1,7 @@
-﻿using AdventOfCode2017.Common.Configuration;
-using AdventOfCode2017.Common.Diagnostics;
+﻿using AdventOfCode2017.Common.Diagnostics;
 using System;
 
-namespace AdventOfCode2017.Day1
+namespace AdventOfCode2017.Day3
 {
     public class Program
     {
@@ -20,17 +19,16 @@ namespace AdventOfCode2017.Day1
         private static void RunPuzzleA()
         {
             // Intro message.
-            Console.WriteLine("--- Begin Day 1 - Puzzle A ---");
+            Console.WriteLine("--- Begin Day 3 - Puzzle A ---");
             Console.WriteLine();
 
             // Prompt for input.
             Console.Write("Enter puzzle input: ");
-            ConsoleHelper.SetBigConsoleReadLimit();
             string numericString = Console.ReadLine();
 
             PerformanceTimer.Start();
 
-            int result = PuzzleA.NumericStringParser.Parse(numericString);
+            int result = PuzzleA.SpiralCalculator.CalculateDistance(Convert.ToInt32(numericString));
 
             PerformanceTimer.Stop();
 
@@ -45,17 +43,16 @@ namespace AdventOfCode2017.Day1
         private static void RunPuzzleB()
         {
             // Intro message.
-            Console.WriteLine("--- Begin Day 1 - Puzzle B ---");
+            Console.WriteLine("--- Begin Day 3 - Puzzle B ---");
             Console.WriteLine();
 
             // Prompt for input.
             Console.Write("Enter puzzle input: ");
-            ConsoleHelper.SetBigConsoleReadLimit();
             string numericString = Console.ReadLine();
 
             PerformanceTimer.Start();
 
-            int result = PuzzleB.NumericStringParser.Parse(numericString);
+            int result = PuzzleB.SpiralCalculator.GetLargerThan(Convert.ToInt32(numericString));
 
             PerformanceTimer.Stop();
 

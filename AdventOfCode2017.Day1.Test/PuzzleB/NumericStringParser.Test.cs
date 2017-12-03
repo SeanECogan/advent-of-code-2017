@@ -4,7 +4,7 @@ using AdventOfCode2017.Day1.PuzzleB;
 namespace AdventOfCode2017.Day1.Test.PuzzleB
 {
     [TestClass]
-    public class UnitTest1
+    public class NumericStringParserTest
     {
         [TestMethod]
         public void Parse_TwoPairsOfNumbers_ReturnsSum()

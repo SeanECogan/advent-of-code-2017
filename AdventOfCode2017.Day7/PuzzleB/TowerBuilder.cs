@@ -74,7 +74,7 @@ namespace AdventOfCode2017.Day7.PuzzleB
 
                 if (weights.Count > 1 &&
                     !weights.All(w => w == currentWeight)
-                    && NewWeight != -1)
+                    && NewWeight == -1)
                 {
                     NewWeight = program.Weight + (weights[0] - currentWeight);
                 }

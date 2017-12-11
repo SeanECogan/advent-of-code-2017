@@ -1,9 +1,10 @@
-﻿using AdventOfCode2017.Common.Diagnostics;
+﻿using AdventOfCode2017.Common.Configuration;
+using AdventOfCode2017.Common.Diagnostics;
 using System;
 
-namespace AdventOfCode2017.Day10
+namespace AdventOfCode2017.Day11
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -19,20 +20,17 @@ namespace AdventOfCode2017.Day10
         private static void RunPuzzleA()
         {
             // Intro message.
-            Console.WriteLine("--- Begin Day 10 - Puzzle A ---");
+            Console.WriteLine("--- Begin Day 11 - Puzzle A ---");
             Console.WriteLine();
 
             // Prompt for input.
-            Console.Write("Enter number of elements: ");
-            int numberOfElements = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter puzzle input: ");
-            string lengths = Console.ReadLine();
+            ConsoleHelper.SetBigConsoleReadLimit();
+            string directions = Console.ReadLine();
 
             PerformanceTimer.Start();
 
-            int result = PuzzleA.HashGenerator.GenerateHashFromLengths(
-                numberOfElements,
-                lengths);
+            int result = PuzzleA.HexPathFinder.FindShortestSteps(directions);
 
             PerformanceTimer.Stop();
 
@@ -47,16 +45,17 @@ namespace AdventOfCode2017.Day10
         private static void RunPuzzleB()
         {
             // Intro message.
-            Console.WriteLine("--- Begin Day 10 - Puzzle B ---");
+            Console.WriteLine("--- Begin Day 11 - Puzzle B ---");
             Console.WriteLine();
 
             // Prompt for input.
             Console.Write("Enter puzzle input: ");
-            string inputString = Console.ReadLine();
+            ConsoleHelper.SetBigConsoleReadLimit();
+            string directions = Console.ReadLine();
 
             PerformanceTimer.Start();
 
-            string result = PuzzleB.HashGenerator.GenerateHash(inputString);
+            int result = PuzzleB.HexPathFinder.FindFurthestDistanceEver(directions);
 
             PerformanceTimer.Stop();
 

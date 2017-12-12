@@ -1,7 +1,7 @@
 ﻿using AdventOfCode2017.Common.Diagnostics;
 using System;
 
-namespace AdventOfCode2017.Day2
+namespace AdventOfCode2017.Day12
 {
     public class Program
     {
@@ -19,12 +19,12 @@ namespace AdventOfCode2017.Day2
         private static void RunPuzzleA()
         {
             // Intro message.
-            Console.WriteLine("--- Begin Day 2 - Puzzle A ---");
+            Console.WriteLine("--- Begin Day 12 - Puzzle A ---");
             Console.WriteLine();
 
             PerformanceTimer.Start();
 
-            int result = PuzzleA.FileParser.ComputeFileChecksum(@"Input\puzzlea.txt");
+            int result = PuzzleA.PipeTraveler.FindConnectionsToZero(@"Input\puzzlea.txt");
 
             PerformanceTimer.Stop();
 
@@ -39,12 +39,12 @@ namespace AdventOfCode2017.Day2
         private static void RunPuzzleB()
         {
             // Intro message.
-            Console.WriteLine("--- Begin Day 2 - Puzzle B ---");
+            Console.WriteLine("--- Begin Day 12 - Puzzle B ---");
             Console.WriteLine();
 
             PerformanceTimer.Start();
 
-            int result = PuzzleB.FileParser.ComputeFileChecksum(@"Input\puzzleb.txt");
+            int result = PuzzleB.PipeTraveler.FindGroups(@"Input\puzzleb.txt");
 
             PerformanceTimer.Stop();
 

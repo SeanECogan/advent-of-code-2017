@@ -25,73 +25,50 @@ namespace AdventOfCode2017.Day12.PuzzleB
 
             _groups = new List<HashSet<int>>();
 
-            int counter = 1;
-            Console.Clear();
-
             foreach (var pipe in _pipes.Keys)
             {
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine($"Checking pipe {counter} of {_pipes.Keys.Count}...");
-
-                bool connectionFound = false;
-
-                foreach (var group in _groups)
+                if (!_groups.Any(gr => gr.Any(g => g == pipe)))
                 {
-                    if (group.Any(g => PipeConnectsToOtherPipe(pipe, g, new HashSet<int>())))
-                    {
-                        group.Add(pipe);
-                        connectionFound = true;
-                    }
+                    var pipeConnections = GetAllPipeConnections(pipe, new HashSet<int>());
+                    pipeConnections.Add(pipe);
+                    _groups.Add(pipeConnections);
                 }
-
-                if (!connectionFound)
-                {
-                    _groups.Add(new HashSet<int>() { pipe });
-                }
-
-                counter++;
             }
 
             return _groups.Count;
         }
 
-        private static bool PipeConnectsToOtherPipe(int pipe, int connectingPipe, HashSet<int> visitedPipes)
+        private static HashSet<int> GetAllPipeConnections(int pipe, HashSet<int> visitedPipes)
         {
             // Get connections for this pipe.
             List<int> connections = _pipes[pipe];
 
-            if (connections.Any(c => c == connectingPipe))
+            // Get connections that have not been visited yet.
+            List<int> unvisitedConnections = connections
+                .Where(c => c != pipe)
+                .Where(c => !visitedPipes.Any(v => v == c))
+                .ToList();
+
+            if (!unvisitedConnections.Any())
             {
-                return true;
+                return visitedPipes;
             }
             else
             {
-                // Get connections that have not been visited yet.
-                List<int> unvisitedConnections = connections
-                    .Where(c => c != pipe)
-                    .Where(c => !visitedPipes.Any(v => v == c))
-                    .ToList();
-
-                if (!unvisitedConnections.Any())
+                foreach (var unvisitedConnection in unvisitedConnections)
                 {
-                    return false;
+                    visitedPipes.Add(unvisitedConnection);
                 }
-                else
-                {
-                    foreach (var unvisitedConnection in unvisitedConnections)
-                    {
-                        visitedPipes.Add(unvisitedConnection);
-                    }
 
-                    if (unvisitedConnections.Any(c => PipeConnectsToOtherPipe(c, connectingPipe, visitedPipes)))
+                foreach (var unvisitedConnection in unvisitedConnections)
+                {
+                    foreach (var connection in GetAllPipeConnections(unvisitedConnection, visitedPipes))
                     {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
+                        visitedPipes.Add(connection);
                     }
                 }
+
+                return visitedPipes;
             }
         }
 

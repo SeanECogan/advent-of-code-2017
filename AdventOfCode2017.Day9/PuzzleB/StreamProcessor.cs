@@ -5,7 +5,6 @@
         public static int CountGarbage(string inputStream)
         {
             int garbageCount = 0;
-            int currentLayer = 0;
             
             bool inGarbage = false;
             bool skipNext = false;

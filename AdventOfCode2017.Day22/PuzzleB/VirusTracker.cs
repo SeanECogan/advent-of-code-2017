@@ -1,5 +1,4 @@
 ﻿using AdventOfCode2017.Day22.Common;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

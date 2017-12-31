@@ -45,6 +45,7 @@
     <Compile Include="Common\Component.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PuzzleB\BridgeBuilder.cs" />
     <Compile Include="PuzzleA\BridgeBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +58,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Input\puzzleb.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Input\puzzlea.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Input\testb.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Input\testa.txt">

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AdventOfCode2017.Day24.PuzzleA
+namespace AdventOfCode2017.Day24.PuzzleB
 {
     public static class BridgeBuilder
     {
-        public static int DetermineStrengthOfStrongestBridge(string filename)
+        public static int DetermineStrengthOfLongestBridge(string filename)
         {
             List<List<Component>> bridges = new List<List<Component>>();
 
@@ -25,7 +25,9 @@ namespace AdventOfCode2017.Day24.PuzzleA
             bridges = FindPossibleBridges(new List<Component>(), 0);
 
             return bridges.Where(b => b.Count > 0)
-                          .Max(b => b.Sum(c => c.Ports.Sum()));
+                          .OrderByDescending(b => b.Count)
+                          .ThenByDescending(b => b.Sum(c => c.Ports.Sum()))
+                          .FirstOrDefault().Sum(c => c.Ports.Sum());
         }
 
         private static List<List<Component>> FindPossibleBridges(

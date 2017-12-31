@@ -9,11 +9,11 @@ namespace AdventOfCode2017.Day24
         {
             RunPuzzleA();
 
-            //Console.WriteLine("Press any key to begin Puzzle B");
-            //Console.Read();
-            //PerformanceTimer.Reset();
+            Console.WriteLine("Press any key to begin Puzzle B");
+            Console.Read();
+            PerformanceTimer.Reset();
 
-            //RunPuzzleB();
+            RunPuzzleB();
         }
 
         private static void RunPuzzleA()
@@ -35,23 +35,23 @@ namespace AdventOfCode2017.Day24
             Console.WriteLine();
         }
 
-        //private static void RunPuzzleB()
-        //{
-        //    // Intro message.
-        //    Console.WriteLine("--- Begin Day 24 - Puzzle B ---");
+        private static void RunPuzzleB()
+        {
+            // Intro message.
+            Console.WriteLine("--- Begin Day 24 - Puzzle B ---");
 
-        //    PerformanceTimer.Start();
+            PerformanceTimer.Start();
 
-        //    int result = PuzzleB.InstructionProcessor.FindCompositesBetweenTwoNumbers(106700, 123700);
+            int result = PuzzleB.BridgeBuilder.DetermineStrengthOfLongestBridge(@"Input\puzzleb.txt");
 
-        //    PerformanceTimer.Stop();
+            PerformanceTimer.Stop();
 
-        //    // Display results.
-        //    Console.WriteLine();
-        //    Console.WriteLine($"Puzzle B result: {result}");
-        //    PerformanceTimer.LogTime();
+            // Display results.
+            Console.WriteLine();
+            Console.WriteLine($"Puzzle B result: {result}");
+            PerformanceTimer.LogTime();
 
-        //    Console.WriteLine();
-        //}
+            Console.WriteLine();
+        }
     }
 }
